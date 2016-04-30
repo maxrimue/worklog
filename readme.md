@@ -35,3 +35,10 @@ export EDITOR=atom
 # Linux
 ~/.bashrc
 ```
+
+You can also tell `worklog` to automatically make `git` ignore the `worklog` file by running `worklog ignore`, which will insert this into the `.gitignore` of your current working directory:
+```bash
+#Ignore worklog
+worklog
+```
+If no `.gitignore` is present, a new one will be created.

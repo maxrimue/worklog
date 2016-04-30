@@ -1,6 +1,10 @@
 #!/bin/bash
 #A simple tool for creating and reading/writing a worklog in your project
 
+if [ "$1" == "ignore" ]; then
+  printf "\n#Ignore worklog\nworklog" >> .gitignore && exit 0
+fi
+
 #Check if standard editor is set, if not, use nano
 if [ "$EDITOR" == "" ]; then
   EDITOR=nano
