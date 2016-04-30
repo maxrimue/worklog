@@ -1,0 +1,27 @@
+#!/bin/bash
+#A simple tool for creating and reading/writing a worklog in your project
+
+#Check if standard editor is set, if not, use nano
+if [ "$EDITOR" == "" ]; then
+  EDITOR=nano
+fi
+
+#Check if provided editor is installed, exit if not
+if [ "$(which $EDITOR)" == "" ]; then
+  echo "\"$EDITOR\" has not been found on your system, aborting"
+  exit 1
+fi
+
+#Check if worklog exists or not
+if [ -f ./worklog ]; then
+  "$EDITOR" ./worklog
+else
+  printf "No worklog found in \"%s\", create a new one? (yes) " "${PWD##*/}"
+  read -r input
+
+  if [[ "$input" == "" || "$input" == "yes" || "$input" == "y" ]]; then
+    "$EDITOR" ./worklog
+  else
+    echo "Aborting"
+  fi
+fi
