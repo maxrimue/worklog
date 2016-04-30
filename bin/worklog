@@ -29,15 +29,15 @@ function createLog {
   printf "No worklog found in \"%s\", create a new one? (yes) " "${PWD##*/}"
   read -r input
 
-  if [[ "$input" == "" || "$input" == "yes" || "$input" == "y" ]]; then
-    "$EDITOR" ./worklog
-  else
+  if [[ "$input" != "" && "$input" != "yes" && "$input" != "y" ]]; then
     echo "Aborting" && exit 0
   fi
 }
 
 if [ "$1" == "ignore" ]; then
   printf "\n#Ignore worklog\nworklog" >> .gitignore
+elif [ "$1" == "today" ]; then
+  setUpEditor && searchLog && printf "\n==> %s\n\n" "$(date)" >> ./worklog && openLog
 else
   setUpEditor && openLog
 fi

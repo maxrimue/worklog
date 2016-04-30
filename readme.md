@@ -36,9 +36,19 @@ export EDITOR=atom
 ~/.bashrc
 ```
 
+## ignore
 You can also tell `worklog` to automatically make `git` ignore the `worklog` file by running `worklog ignore`, which will insert this into the `.gitignore` of your current working directory:
 ```bash
 #Ignore worklog
 worklog
 ```
 If no `.gitignore` is present, a new one will be created.
+
+## today
+If you run `worklog today`, worklog will create and open the `worklog` file as usual, but places a new line at the end of the file stating the current date of your operating system. This can be handy if you quickly want to write things down without having to enter the date of the new entry. Example:
+```bash
+worklog today
+```
+```bash
+==> Sa 30 Apr 2016 20:53:57 CEST
+```
